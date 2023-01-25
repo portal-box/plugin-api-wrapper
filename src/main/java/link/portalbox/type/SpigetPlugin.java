@@ -15,7 +15,6 @@ import java.util.Map;
 public class SpigetPlugin {
 
     private final int id;
-    private boolean knownMalware;
     private int[] dependencies;
     private HashMap<String, Boolean> files = new HashMap<>();
     private String[] alternativeDownloads = null;
@@ -84,5 +83,24 @@ public class SpigetPlugin {
         } catch (Exception ignored) {}
 
     }
+
+    public int getId() { return id; }
+    public int[] getDependencies() { return dependencies; }
+    public HashMap<String, Boolean> getFiles() { return files; }
+    public String[] getAlternativeDownloads() { return alternativeDownloads; }
+    public String getSpigotName() { return spigotName; }
+    public String getTag() { return tag; }
+    public String getVersion() { return version; }
+    public String getIconUrl() { return iconUrl; }
+    public int getDownloads() { return downloads; }
+    public long getUpdateDate() { return updateDate; }
+    public double getPrice() { return price; }
+    public double getRating() { return rating; }
+    public double getFileSize() { return fileSize; }
+    public boolean isPremium() { return premium; }
+    public FileType getFileType() { return fileType; }
+    public SizeUnit getSizeUnit() { return sizeUnit; }
+    public JsonObject getSpigetJson() { return spigetJson; }
+    public JsonObject getPortalboxJson() { return portalboxJson; }
 
 }
