@@ -6,15 +6,17 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import link.portalbox.util.JsonUtil;
 
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 public class SpigetPlugin {
 
     private final int id;
     private int[] dependencies;
-    private final HashMap<String, Boolean> files = new HashMap<>();
+    private HashMap<String, Boolean> files = new HashMap<>();
     private String[] alternativeDownloads = null;
 
     private final String spigotName;
@@ -71,89 +73,33 @@ public class SpigetPlugin {
         }
 
         try {
-            dependencies = gson.fromJson(portalboxJson.get("dependencies"), new TypeToken<LinkedList<Integer>>() {
-            }.getType());
-            alternativeDownloads = gson.fromJson(portalboxJson.get("altDownloads"), new TypeToken<LinkedList<String>>() {
-            }.getType());
+            dependencies = gson.fromJson(portalboxJson.get("dependencies"), new TypeToken<LinkedList<Integer>>() {}.getType());
+            alternativeDownloads = gson.fromJson(portalboxJson.get("altDownloads"), new TypeToken<LinkedList<String>>() {}.getType());
 
             for (Map.Entry<String, JsonElement> entry : portalboxJson.get("files").getAsJsonObject().entrySet()) {
                 files.put(entry.getKey(), entry.getValue().getAsBoolean());
             }
-        } catch (Exception ignored) {
-        }
+        } catch (Exception ignored) {}
 
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public int[] getDependencies() {
-        return dependencies;
-    }
-
-    public HashMap<String, Boolean> getFiles() {
-        return files;
-    }
-
-    public String[] getAlternativeDownloads() {
-        return alternativeDownloads;
-    }
-
-    public String getSpigotName() {
-        return spigotName;
-    }
-
-    public String getTag() {
-        return tag;
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-    public String getIconUrl() {
-        return iconUrl;
-    }
-
-    public int getDownloads() {
-        return downloads;
-    }
-
-    public long getUpdateDate() {
-        return updateDate;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public double getRating() {
-        return rating;
-    }
-
-    public double getFileSize() {
-        return fileSize;
-    }
-
-    public boolean isPremium() {
-        return premium;
-    }
-
-    public FileType getFileType() {
-        return fileType;
-    }
-
-    public SizeUnit getSizeUnit() {
-        return sizeUnit;
-    }
-
-    public JsonObject getSpigetJson() {
-        return spigetJson;
-    }
-
-    public JsonObject getPortalboxJson() {
-        return portalboxJson;
-    }
+    public int getId() { return id; }
+    public int[] getDependencies() { return dependencies; }
+    public HashMap<String, Boolean> getFiles() { return files; }
+    public String[] getAlternativeDownloads() { return alternativeDownloads; }
+    public String getSpigotName() { return spigotName; }
+    public String getTag() { return tag; }
+    public String getVersion() { return version; }
+    public String getIconUrl() { return iconUrl; }
+    public int getDownloads() { return downloads; }
+    public long getUpdateDate() { return updateDate; }
+    public double getPrice() { return price; }
+    public double getRating() { return rating; }
+    public double getFileSize() { return fileSize; }
+    public boolean isPremium() { return premium; }
+    public FileType getFileType() { return fileType; }
+    public SizeUnit getSizeUnit() { return sizeUnit; }
+    public JsonObject getSpigetJson() { return spigetJson; }
+    public JsonObject getPortalboxJson() { return portalboxJson; }
 
 }
