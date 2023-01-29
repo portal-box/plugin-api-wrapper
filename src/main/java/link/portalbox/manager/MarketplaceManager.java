@@ -14,12 +14,13 @@ public class MarketplaceManager {
 
     public MarketplaceManager() {
         Gson gson = new Gson();
-        JsonElement jsonData = gson.fromJson(JsonUtil.getPluginIndex() , JsonElement.class);
+        JsonElement jsonData = gson.fromJson(JsonUtil.getPluginIndex(), JsonElement.class);
         try {
             for (Map.Entry<String, JsonElement> entry : jsonData.getAsJsonObject().entrySet()) {
                 marketplaceCache.put(Integer.parseInt(entry.getKey()), entry.getValue().getAsString());
             }
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
     }
 
     public Collection<String> getAllNames() {

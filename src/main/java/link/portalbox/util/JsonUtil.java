@@ -7,6 +7,10 @@ import java.net.URL;
 
 public class JsonUtil {
 
+    private JsonUtil() throws IllegalAccessException {
+        throw new IllegalAccessException("No JsonUtil instances for you!");
+    }
+
     public static String getJson(String urlStr) {
         try {
             URL url = new URL(urlStr);
@@ -39,5 +43,4 @@ public class JsonUtil {
     public static String getPluginIndex() {
         return getJson("https://api.portalbox.link/index");
     }
-
 }
